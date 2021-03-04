@@ -13,7 +13,8 @@
 		9E86890625F045F3000E27CB /* libsfml-audio.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86890125F045F3000E27CB /* libsfml-audio.2.5.1.dylib */; };
 		9E86890725F045F3000E27CB /* libsfml-system.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86890225F045F3000E27CB /* libsfml-system.2.5.1.dylib */; };
 		9E86890825F045F3000E27CB /* libsfml-graphics.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86890325F045F3000E27CB /* libsfml-graphics.2.5.1.dylib */; };
-		9E86890C25F06B4E000E27CB /* initializationFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86890A25F06B4E000E27CB /* initializationFunctions.cpp */; };
+		9E86891025F07377000E27CB /* chessPieces.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86890E25F07377000E27CB /* chessPieces.cpp */; };
+		9E86891625F0A08D000E27CB /* movementFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86891425F0A08D000E27CB /* movementFunctions.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,8 +37,10 @@
 		9E86890125F045F3000E27CB /* libsfml-audio.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-audio.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-audio.2.5.1.dylib"; sourceTree = "<group>"; };
 		9E86890225F045F3000E27CB /* libsfml-system.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-system.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-system.2.5.1.dylib"; sourceTree = "<group>"; };
 		9E86890325F045F3000E27CB /* libsfml-graphics.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-graphics.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-graphics.2.5.1.dylib"; sourceTree = "<group>"; };
-		9E86890A25F06B4E000E27CB /* initializationFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = initializationFunctions.cpp; sourceTree = "<group>"; };
-		9E86890B25F06B4E000E27CB /* initializationFunctions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = initializationFunctions.hpp; sourceTree = "<group>"; };
+		9E86890E25F07377000E27CB /* chessPieces.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = chessPieces.cpp; sourceTree = "<group>"; };
+		9E86890F25F07377000E27CB /* chessPieces.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = chessPieces.hpp; sourceTree = "<group>"; };
+		9E86891425F0A08D000E27CB /* movementFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = movementFunctions.cpp; sourceTree = "<group>"; };
+		9E86891525F0A08D000E27CB /* movementFunctions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = movementFunctions.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				9E8688F525F04443000E27CB /* main.cpp */,
-				9E86890A25F06B4E000E27CB /* initializationFunctions.cpp */,
-				9E86890B25F06B4E000E27CB /* initializationFunctions.hpp */,
+				9E86891425F0A08D000E27CB /* movementFunctions.cpp */,
+				9E86891525F0A08D000E27CB /* movementFunctions.hpp */,
+				9E86890E25F07377000E27CB /* chessPieces.cpp */,
+				9E86890F25F07377000E27CB /* chessPieces.hpp */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -152,7 +157,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E8688F625F04443000E27CB /* main.cpp in Sources */,
-				9E86890C25F06B4E000E27CB /* initializationFunctions.cpp in Sources */,
+				9E86891025F07377000E27CB /* chessPieces.cpp in Sources */,
+				9E86891625F0A08D000E27CB /* movementFunctions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
