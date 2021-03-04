@@ -13,6 +13,7 @@
 		9E86890625F045F3000E27CB /* libsfml-audio.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86890125F045F3000E27CB /* libsfml-audio.2.5.1.dylib */; };
 		9E86890725F045F3000E27CB /* libsfml-system.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86890225F045F3000E27CB /* libsfml-system.2.5.1.dylib */; };
 		9E86890825F045F3000E27CB /* libsfml-graphics.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86890325F045F3000E27CB /* libsfml-graphics.2.5.1.dylib */; };
+		9E86890C25F06B4E000E27CB /* initializationFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86890A25F06B4E000E27CB /* initializationFunctions.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		9E86890125F045F3000E27CB /* libsfml-audio.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-audio.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-audio.2.5.1.dylib"; sourceTree = "<group>"; };
 		9E86890225F045F3000E27CB /* libsfml-system.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-system.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-system.2.5.1.dylib"; sourceTree = "<group>"; };
 		9E86890325F045F3000E27CB /* libsfml-graphics.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-graphics.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-graphics.2.5.1.dylib"; sourceTree = "<group>"; };
+		9E86890A25F06B4E000E27CB /* initializationFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = initializationFunctions.cpp; sourceTree = "<group>"; };
+		9E86890B25F06B4E000E27CB /* initializationFunctions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = initializationFunctions.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				9E8688F525F04443000E27CB /* main.cpp */,
+				9E86890A25F06B4E000E27CB /* initializationFunctions.cpp */,
+				9E86890B25F06B4E000E27CB /* initializationFunctions.hpp */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E8688F625F04443000E27CB /* main.cpp in Sources */,
+				9E86890C25F06B4E000E27CB /* initializationFunctions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

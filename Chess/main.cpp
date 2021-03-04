@@ -6,6 +6,7 @@
 //
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "initializationFunctions.hpp"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ int main() {
     // generate background texture (chess board)
     sf::Texture boardTexture;
     if (!boardTexture.loadFromFile("/Users/earlene/Desktop/Chess/Chess/Assets/chessBoard.png")) { //make texture path non-absolute
-        cout << "File couldn't be loaded" << endl;
+        cout << "Background image couldn't be loaded" << endl;
     };
     
     // create sprite for background (chess board)
@@ -24,6 +25,9 @@ int main() {
     chessBoard.setTexture(boardTexture);
     
     chessBoard.setScale(0.729, 0.729);
+    
+    // create sprites for all chess pieces
+    
     
     while (window.isOpen()) {
         sf::Event event;
@@ -40,6 +44,8 @@ int main() {
         window.clear();
         
         window.draw(chessBoard);
+        
+        initializePieces(window);
         
         window.display();
     }
