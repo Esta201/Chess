@@ -7,12 +7,24 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+using namespace std;
+
 int main() {
-    // insert code here...
+    // generate window
+    sf::RenderWindow window( sf::VideoMode(1400, 1400), "Chess");
     
-    sf::RenderWindow window( sf::VideoMode( 800, 800), "Chess");
-    sf::Texture chessBoard;
-    chessBoard.loadFromFile("/Assets/chessBoard.png");
+    // generate background texture (chess board)
+    sf::Texture boardTexture;
+    if (!boardTexture.loadFromFile("/Users/earlene/Desktop/Chess/Chess/Assets/chessBoard.png")) { //make texture path non-absolute
+        cout << "File couldn't be loaded" << endl;
+    };
+    
+    // create sprite for background (chess board)
+    sf::Sprite chessBoard;
+    chessBoard.setTexture(boardTexture);
+    
+    chessBoard.setScale(0.729, 0.729);
+    
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent (event)) {
@@ -26,8 +38,11 @@ int main() {
         }
         
         window.clear();
+        
+        window.draw(chessBoard);
+        
+        window.display();
     }
     
-    std::cout << "Hello, World!\n";
     return 0;
 }
