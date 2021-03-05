@@ -26,3 +26,4 @@ string returnCurrentSquare(int mouseX, int mouseY, int windowX, int windowY) {
     
     return (string(1, xChar) + to_string(inverseY[locationY]));
 }
+

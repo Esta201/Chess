@@ -19,6 +19,8 @@ class dummyChessPiece {
 private:
     
     sf::Sprite chessPiece;
+    static int nextAvailableID;
+    int uniqueID;
     string position;
     
 public:
@@ -26,7 +28,8 @@ public:
     dummyChessPiece(string position);
     sf::Sprite returnSprite() const;
     string returnPosition() const;
-    void movePiece(string newPos, sf::Window &window);
+    
+    void movePiece(string newPos);
     
 };
 

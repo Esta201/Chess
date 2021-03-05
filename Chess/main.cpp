@@ -30,7 +30,7 @@ int main() {
     chessBoard.setScale(0.7769, 0.7777);
     
     // instantiate instance of dummychesspiece
-    dummyChessPiece chessPiece = dummyChessPiece("a1");
+    dummyChessPiece chessPiece = dummyChessPiece("a8");
     cout << chessPiece.returnPosition() << endl;
     
     while (window.isOpen()) {
@@ -45,6 +45,11 @@ int main() {
                         
                         string chessSquare = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
                         cout << chessSquare << endl;
+                        
+                        //hard code for the current dummy chess piece
+                        if (chessSquare == "a8") {
+                            chessPiece.movePiece("a8");
+                        };
                     }
                     break;
                 default:
