@@ -33,4 +33,12 @@ public:
     
 };
 
+class chessPiece {
+private:
+protected:
+public:
+    chessPiece();
+};
+
+
 #endif /* chessPieces_hpp */

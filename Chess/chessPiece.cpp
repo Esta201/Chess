@@ -5,7 +5,7 @@
 //  Created by Earlene on 4/03/21.
 //
 
-#include "chessPieces.hpp"
+#include "chessPiece.hpp"
 #include <iostream>
 #define INITIAL_OFFSET_X 3
 #define INITIAL_OFFSET_Y 3
@@ -50,3 +50,5 @@ void dummyChessPiece::movePiece(string newPos) {
     this->chessPiece.move(MOVERIGHT, MOVELEFT);
     
 }
+
+

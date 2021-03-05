@@ -13,8 +13,12 @@
 		9E86890625F045F3000E27CB /* libsfml-audio.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86890125F045F3000E27CB /* libsfml-audio.2.5.1.dylib */; };
 		9E86890725F045F3000E27CB /* libsfml-system.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86890225F045F3000E27CB /* libsfml-system.2.5.1.dylib */; };
 		9E86890825F045F3000E27CB /* libsfml-graphics.2.5.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E86890325F045F3000E27CB /* libsfml-graphics.2.5.1.dylib */; };
-		9E86891025F07377000E27CB /* chessPieces.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86890E25F07377000E27CB /* chessPieces.cpp */; };
+		9E86891025F07377000E27CB /* chessPiece.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86890E25F07377000E27CB /* chessPiece.cpp */; };
 		9E86891625F0A08D000E27CB /* movementFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86891425F0A08D000E27CB /* movementFunctions.cpp */; };
+		9E86891A25F239CF000E27CB /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86891825F239CF000E27CB /* game.cpp */; };
+		9E86891E25F239DB000E27CB /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86891C25F239DB000E27CB /* player.cpp */; };
+		9E86892225F23E0F000E27CB /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86892025F23E0F000E27CB /* board.cpp */; };
+		9E86892625F2421B000E27CB /* pieceType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86892425F2421B000E27CB /* pieceType.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,10 +41,18 @@
 		9E86890125F045F3000E27CB /* libsfml-audio.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-audio.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-audio.2.5.1.dylib"; sourceTree = "<group>"; };
 		9E86890225F045F3000E27CB /* libsfml-system.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-system.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-system.2.5.1.dylib"; sourceTree = "<group>"; };
 		9E86890325F045F3000E27CB /* libsfml-graphics.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-graphics.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-graphics.2.5.1.dylib"; sourceTree = "<group>"; };
-		9E86890E25F07377000E27CB /* chessPieces.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = chessPieces.cpp; sourceTree = "<group>"; };
-		9E86890F25F07377000E27CB /* chessPieces.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = chessPieces.hpp; sourceTree = "<group>"; };
+		9E86890E25F07377000E27CB /* chessPiece.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = chessPiece.cpp; sourceTree = "<group>"; };
+		9E86890F25F07377000E27CB /* chessPiece.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = chessPiece.hpp; sourceTree = "<group>"; };
 		9E86891425F0A08D000E27CB /* movementFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = movementFunctions.cpp; sourceTree = "<group>"; };
 		9E86891525F0A08D000E27CB /* movementFunctions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = movementFunctions.hpp; sourceTree = "<group>"; };
+		9E86891825F239CF000E27CB /* game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		9E86891925F239CF000E27CB /* game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
+		9E86891C25F239DB000E27CB /* player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
+		9E86891D25F239DB000E27CB /* player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
+		9E86892025F23E0F000E27CB /* board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = board.cpp; sourceTree = "<group>"; };
+		9E86892125F23E0F000E27CB /* board.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = board.hpp; sourceTree = "<group>"; };
+		9E86892425F2421B000E27CB /* pieceType.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pieceType.cpp; sourceTree = "<group>"; };
+		9E86892525F2421B000E27CB /* pieceType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pieceType.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +94,16 @@
 				9E8688F525F04443000E27CB /* main.cpp */,
 				9E86891425F0A08D000E27CB /* movementFunctions.cpp */,
 				9E86891525F0A08D000E27CB /* movementFunctions.hpp */,
-				9E86890E25F07377000E27CB /* chessPieces.cpp */,
-				9E86890F25F07377000E27CB /* chessPieces.hpp */,
+				9E86891925F239CF000E27CB /* game.hpp */,
+				9E86891825F239CF000E27CB /* game.cpp */,
+				9E86892125F23E0F000E27CB /* board.hpp */,
+				9E86892025F23E0F000E27CB /* board.cpp */,
+				9E86891D25F239DB000E27CB /* player.hpp */,
+				9E86891C25F239DB000E27CB /* player.cpp */,
+				9E86890F25F07377000E27CB /* chessPiece.hpp */,
+				9E86890E25F07377000E27CB /* chessPiece.cpp */,
+				9E86892425F2421B000E27CB /* pieceType.cpp */,
+				9E86892525F2421B000E27CB /* pieceType.hpp */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -157,8 +177,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E8688F625F04443000E27CB /* main.cpp in Sources */,
-				9E86891025F07377000E27CB /* chessPieces.cpp in Sources */,
+				9E86891E25F239DB000E27CB /* player.cpp in Sources */,
+				9E86892225F23E0F000E27CB /* board.cpp in Sources */,
+				9E86891025F07377000E27CB /* chessPiece.cpp in Sources */,
+				9E86892625F2421B000E27CB /* pieceType.cpp in Sources */,
 				9E86891625F0A08D000E27CB /* movementFunctions.cpp in Sources */,
+				9E86891A25F239CF000E27CB /* game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

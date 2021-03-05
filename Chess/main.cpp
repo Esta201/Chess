@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
-#include "chessPieces.hpp"
+#include "chessPiece.hpp"
 #include "movementFunctions.hpp"
 
 using namespace std;
