@@ -29,8 +29,9 @@ int main() {
     
     chessBoard.setScale(0.7769, 0.7777);
     
-    // create sprites for all chess pieces
-    
+    // instantiate instance of dummychesspiece
+    dummyChessPiece chessPiece = dummyChessPiece("a1");
+    cout << chessPiece.returnPosition() << endl;
     
     while (window.isOpen()) {
         sf::Event event;
@@ -41,8 +42,7 @@ int main() {
                     break;
                 case sf::Event::MouseButtonReleased:
                     if (event.mouseButton.button == sf::Mouse::Left) {
-                        cout << "x:" << event.mouseButton.x << endl;
-                        cout << "y:" << event.mouseButton.y << endl;
+                        
                         string chessSquare = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
                         cout << chessSquare << endl;
                     }
@@ -55,7 +55,7 @@ int main() {
         window.clear();
         
         window.draw(chessBoard);
-        
+        window.draw(chessPiece.returnSprite());
         window.display();
     }
     

@@ -17,11 +17,12 @@ string returnCurrentSquare(int mouseX, int mouseY, int windowX, int windowY) {
     int locationX = mouseX/(windowX/8); //how far to the right the user is
     int locationY = mouseY/(windowY/8); //how far down the user is
     
-    //define inverse array for y vaulues
+    //define inverse array for y vaulues (i.e, have it go from bottom to top, rather than the other way around)
     int inverseY[8] = {8, 7, 6, 5, 4, 3, 2, 1};
     
+    //convert x value to letter equivalent (a-h)
     locationX += 97;
     char xChar = locationX;
-    cout << xChar << endl;
+    
     return (string(1, xChar) + to_string(inverseY[locationY]));
 }
