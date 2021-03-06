@@ -8,30 +8,17 @@
 #include <iostream>
 #include <string>
 #include "chessPiece.hpp"
+#include "board.hpp"
 #include "movementFunctions.hpp"
+#include "game.hpp"
 
 using namespace std;
 
 int main() {
     // generate window with a fixed size
     sf::RenderWindow window( sf::VideoMode(1400, 1400), "Chess", sf::Style::Close | sf::Style::Titlebar);
-
     
-    // generate background texture (chess board)
-    sf::Texture boardTexture;
-    if (!boardTexture.loadFromFile("/Users/earlene/Desktop/Chess/Chess/Assets/chessBoard.png")) { //make texture path non-absolute
-        cout << "Background image couldn't be loaded" << endl;
-    };
-    
-    // create sprite for background (chess board)
-    sf::Sprite chessBoard;
-    chessBoard.setTexture(boardTexture);
-    
-    chessBoard.setScale(0.7769, 0.7777);
-    
-    // instantiate instance of dummychesspiece
-    dummyChessPiece chessPiece = dummyChessPiece("a8");
-    cout << chessPiece.returnPosition() << endl;
+    game currentGame = game();
     
     while (window.isOpen()) {
         sf::Event event;
@@ -47,9 +34,9 @@ int main() {
                         cout << chessSquare << endl;
                         
                         //hard code for the current dummy chess piece
-                        if (chessSquare == "a8") {
-                            chessPiece.movePiece("a8");
-                        };
+//                        if (chessSquare == "a8") {
+//                            chessPiece.movePiece("a8");
+//                        };
                     }
                     break;
                 default:
@@ -57,11 +44,7 @@ int main() {
             }
         }
         
-        window.clear();
-        
-        window.draw(chessBoard);
-        window.draw(chessPiece.returnSprite());
-        window.display();
+        currentGame.updateGame(window);
     }
     
     return 0;

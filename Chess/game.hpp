@@ -11,21 +11,28 @@
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include "board.hpp"
+#include "player.hpp"
 
 using namespace std;
 
 class game {
     
 private:
-    board chessBoard;
     bool active;
+    
+    board* chessBoard;
+    player* playerWhite;
+    player* playerBlack;
+    
 public:
     game();
-    void generateStartingScreen(sf::Window &window);
-    void generateEndScreen(sf::Window &window);
+    void generateEndScreen(sf::RenderWindow &window);
+    void updateGame(sf::RenderWindow &window);
     void endGame();
     void restart();
     bool returnActive();
+    
+    ~game();
 };
 
 #endif /* game_hpp */

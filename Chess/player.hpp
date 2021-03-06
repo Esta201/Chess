@@ -12,18 +12,21 @@
 #include "chessPiece.hpp"
 
 class player{
+    
 private:
     int score;
-    char color;
+    string color;
     vector<chessPiece> activePieces;
     vector<chessPiece> inactivePieces;
     bool turn;
+    
 public:
-    player();
+    player(string color);
     int returnScore();
     char returnColor();
     bool returnTurn();
     void calculateScore();
     void updatePieces();
 };
+
 #endif /* player_hpp */

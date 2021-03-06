@@ -11,14 +11,16 @@
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include "player.hpp"
+
 class board {
 private:
-    player playerWhite;
-    player playerBlack;
     sf::Sprite chessBoard;
+    sf::Texture *bgTexture;
 public:
     board();
-    void switchTurn();
+    void rotateBoard();
     sf::Sprite returnChessBoard();
+    
+    ~board();
 };
 #endif /* board_hpp */

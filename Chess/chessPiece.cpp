@@ -51,4 +51,6 @@ void dummyChessPiece::movePiece(string newPos) {
     
 }
 
-
+chessPiece::chessPiece() {
+    ;
+}

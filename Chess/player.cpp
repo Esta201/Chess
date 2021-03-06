@@ -6,3 +6,23 @@
 //
 
 #include "player.hpp"
+#include <string>
+using namespace std;
+
+player::player(string color) {
+    
+    //determine whether the player is white or black
+    this->color = color;
+    
+    //if the player is white, initially set their turn to true
+    if (!(color.compare("w"))) {
+        this->turn = true;
+    }
+    else {
+        this->turn = false;
+    }
+    
+    //initially set their score to 0
+    this->score = 0;
+    
+}
