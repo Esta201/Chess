@@ -16,17 +16,21 @@ class player{
 private:
     int score;
     string color;
-    vector<chessPiece> activePieces;
-    vector<chessPiece> inactivePieces;
+    vector<chessPiece*> activePieces;
+    vector<chessPiece*> inactivePieces;
     bool turn;
     
 public:
     player(string color);
+    
     int returnScore();
-    char returnColor();
+    string returnColor();
     bool returnTurn();
+    
     void calculateScore();
     void updatePieces();
+    
+    ~player();
 };
 
 #endif /* player_hpp */

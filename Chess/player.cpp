@@ -26,3 +26,20 @@ player::player(string color) {
     this->score = 0;
     
 }
+
+bool player::returnTurn() {
+    return this->turn;
+}
+
+string player::returnColor() {
+    return this->color;
+}
+
+int player::returnScore() {
+    return this->score;
+}
+
+player::~player() {
+    
+}
+
