@@ -24,6 +24,10 @@ private:
     player* playerWhite;
     player* playerBlack;
     
+    sf::Texture* chessPieceTexture;
+    
+    int turn;
+    
 public:
     game();
     void generateEndScreen(sf::RenderWindow &window);
@@ -32,6 +36,7 @@ public:
     void restart();
     bool returnActive();
     
+    int returnTurn();
     ~game();
 };
 

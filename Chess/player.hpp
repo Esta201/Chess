@@ -16,19 +16,24 @@ class player{
 private:
     int score;
     string color;
+    
     vector<chessPiece*> activePieces;
     vector<chessPiece*> inactivePieces;
+
     bool turn;
     
 public:
-    player(string color);
+    player(string color, sf::Texture *chessPieceTexture);
     
     int returnScore();
     string returnColor();
     bool returnTurn();
     
+    void calculateValidMoves(player &otherPlayer);
     void calculateScore();
-    void updatePieces();
+    
+    vector<chessPiece*> returnActivePieces();
+    vector<chessPiece*> returnInactivePieces();
     
     ~player();
 };

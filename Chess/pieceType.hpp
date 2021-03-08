@@ -14,6 +14,9 @@
 class pawn: public chessPiece {
 private:
 public:
+    pawn(string position, sf::Texture *chessPieceTexture, string color);
+        
+    ~pawn();
 };
 
 class knight: public chessPiece {

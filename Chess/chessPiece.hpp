@@ -11,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include <stdio.h>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -33,11 +34,33 @@ public:
     
 };
 
+//abstract class
 class chessPiece {
-private:
 protected:
+    
+    int uniqueID;
+    bool active;
+    static int nextAvailableID;
+    sf::Texture *chessPieceTexture;
+    string color;
+
+    //will be defined by subclasses
+    sf::Sprite piece;
+
+    string position;
+    vector<string> validMoves();
+    
 public:
-    chessPiece();
+    chessPiece(string position, sf::Texture *chessPieceTexture, string color);
+    
+    bool returnActive();
+    string returnPosition();
+    int returnID();
+    
+    sf::Sprite returnPiece();
+    void movePiece(string newPos);
+
+    ~chessPiece();
 };
 
 

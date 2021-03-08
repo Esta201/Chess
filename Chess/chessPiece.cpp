@@ -51,6 +51,46 @@ void dummyChessPiece::movePiece(string newPos) {
     
 }
 
-chessPiece::chessPiece() {
+int chessPiece::nextAvailableID;
+
+chessPiece::chessPiece(string position, sf::Texture *chessPieceTexture, string color) {
+    this->uniqueID = nextAvailableID;
+    nextAvailableID++;
+    this->active = true;
+    
+    //set default position of all pieces to a8
+    this->position = "a8";
+    
+    this->chessPieceTexture = chessPieceTexture;
+    this->color = color;
+}
+
+bool chessPiece::returnActive() {
+    return this->active;
+}
+
+string chessPiece::returnPosition() {
+    return this->position;
+}
+
+int chessPiece::returnID() {
+    return this->uniqueID;
+}
+
+sf::Sprite chessPiece::returnPiece() {
+    return this->piece;
+}
+
+void chessPiece::movePiece(string newPos) {
+    
+    //find teh difference between the new position and the old position, and change x and y position accordingly
+    this->piece.move((int(newPos[0]) - int(this->position[0])) * MOVERIGHT,(int(this->position[1]) - int(newPos[1])) * MOVELEFT);
+    
+    //set new position of piece
+    this->position = newPos;
+    
+}
+
+chessPiece::~chessPiece() {
     ;
 }

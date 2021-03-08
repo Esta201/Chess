@@ -6,10 +6,13 @@
 //
 
 #include "player.hpp"
+#include "chessPiece.hpp"
+#include "pieceType.hpp"
+
 #include <string>
 using namespace std;
 
-player::player(string color) {
+player::player(string color, sf::Texture *chessPieceTexture) {
     
     //determine whether the player is white or black
     this->color = color;
@@ -25,6 +28,12 @@ player::player(string color) {
     //initially set their score to 0
     this->score = 0;
     
+    
+    //initialize and add a pawn instance
+    pawn *pawn0 = new pawn("a2", chessPieceTexture, "w");
+    
+    activePieces.push_back(pawn0);
+    
 }
 
 bool player::returnTurn() {
@@ -39,7 +48,11 @@ int player::returnScore() {
     return this->score;
 }
 
+vector<chessPiece*> player::returnActivePieces() {
+    return this->activePieces;
+}
+
 player::~player() {
-    
+    ;
 }
 
