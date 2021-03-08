@@ -16,6 +16,7 @@ using namespace std;
 int first = 2;
 
 chessPiece* activePiece;
+bool active = false;
 
 game::game() {
     
@@ -51,23 +52,43 @@ void game::updateGame(sf::RenderWindow &window) {
             switch (event.type) {
                     
                 //close the window if user clicks the exit button
-                case sf::Event::Closed:
+                case sf::Event::Closed: {
                     window.close();
                     break;
-                
+                }
                 //if the mouse button is clicked, check that there's an active piece w/ the player's piece there
                 case sf::Event::MouseButtonPressed: {
-                    string squareClicked = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
-                    
-                    
-                    break;
-                }
-                case sf::Event::MouseButtonReleased:
                     if (event.mouseButton.button == sf::Mouse::Left) {
-                        string chessSquare = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
-                        cout << chessSquare << endl;
+                        string squareClicked = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
+                        activePiece = returnActivePiece(squareClicked);
+                        
+                        //if there's a valid piece in the chosen square, store the piece as the current "Active Piece"
+                        if (activePiece != NULL) {
+                            active = true;
+                            cout << activePiece->returnPosition() << endl;
+                        }
+                        else {
+                            active = false;
+                        }
+                        
+                        break;
+                    }
+                }
+                
+
+                case sf::Event::MouseButtonReleased: {
+                    if (event.mouseButton.button == sf::Mouse::Left) {
+                        string squareClicked = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
+                        if (active) {
+                            activePiece->movePiece(squareClicked);
+                        }
+                        active = false;
+                        
+                        
+                        cout << squareClicked << endl;
                     }
                     break;
+                }
                 default:
                     break;
             }
@@ -84,6 +105,21 @@ void game::updateGame(sf::RenderWindow &window) {
             window.display();
         }
     }
+}
+
+chessPiece* game::returnActivePiece(string squareClicked) {
+    
+    //check whether the player who's turn it is has a valid piece in the chosen square
+    chessPiece* validPiece = NULL;
+    
+    if (turn == 1) {
+        validPiece = playerWhite->returnValidPiece(squareClicked);
+    }
+    else {
+        validPiece = playerBlack->returnValidPiece(squareClicked);
+    }
+    
+    return validPiece;
 }
 
 int game::returnTurn() {

@@ -29,6 +29,8 @@ public:
     string returnColor();
     bool returnTurn();
     
+    chessPiece* returnValidPiece(string position);
+    
     void calculateValidMoves(player &otherPlayer);
     void calculateScore();
     

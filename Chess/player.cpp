@@ -10,6 +10,7 @@
 #include "pieceType.hpp"
 
 #include <string>
+
 using namespace std;
 
 player::player(string color, sf::Texture *chessPieceTexture) {
@@ -50,6 +51,19 @@ int player::returnScore() {
 
 vector<chessPiece*> player::returnActivePieces() {
     return this->activePieces;
+}
+
+chessPiece* player::returnValidPiece(string position) {
+    chessPiece* validPiece = NULL;
+    
+    //check whether there's an active piece in given position
+    for (int i = 0; i < activePieces.size(); i++) {
+        if (!(activePieces[i]->returnPosition().compare(position))) {
+            validPiece = activePieces[i];
+        }
+    }
+    
+    return validPiece;
 }
 
 player::~player() {
