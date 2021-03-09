@@ -8,12 +8,12 @@
 #include "pieceType.hpp"
 #include <SFML/Graphics.hpp>
 
-int pieceStartValues[6] = {1690, 1352, 996};
+int pieceStartValues[6] = {1514, 2, 1180};
 
 pawn::pawn(string position, sf::Texture *chessPieceTexture, string color) : chessPiece(position, chessPieceTexture, color){
     this->type = "pawn";
     
-    createSprite(chessPieceTexture, pieceStartValues[0]);
+    createSprite(chessPieceTexture, 0);
     movePiece(position);
 }
 
@@ -24,7 +24,7 @@ pawn::~pawn() {
 rook::rook(string position, sf::Texture *chessPieceTexture, string color) : chessPiece(position, chessPieceTexture, color) {
     this->type = "rook";
     
-    createSprite(chessPieceTexture, 1352);
+    createSprite(chessPieceTexture, 1);
     movePiece(position);
     
 }
@@ -36,7 +36,7 @@ rook::~rook() {
 knight::knight(string position, sf::Texture *chessPieceTexture, string color) : chessPiece(position, chessPieceTexture, color) {
     this->type = "knight";
     
-    createSprite(chessPieceTexture, pieceStartValues[2]);
+    createSprite(chessPieceTexture, 2);
     movePiece(position);
 }
     

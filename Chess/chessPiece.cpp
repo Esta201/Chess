@@ -7,16 +7,20 @@
 
 #include "chessPiece.hpp"
 #include <iostream>
-#define X_SCALE 0.7
-#define Y_SCALE 0.7
+
 #define MOVERIGHT 174.2
 #define MOVELEFT 174.2
 
-#define PIECE_WIDTH 250
-#define PIECE_HEIGHT 250
-#define START_HEIGHT_WHITE 20
-#define START_HEIGHT_BLACK 353
+int xStart[6] = {1490, -30,};
 
+int yStartWhite[6] = {382, 360};
+int yStartBlack[6] = {0, -10};
+
+int pieceWidth[6] = {198, 230};
+int pieceHeight[6] = {233, 280};
+
+float xScale[6] = {0.75, 0.65};
+float yScale[6] = {0.7, 0.60};
 
 int chessPiece::nextAvailableID = 0;
 
@@ -52,18 +56,18 @@ sf::Sprite chessPiece::returnPiece() {
     return this->piece;
 }
 
-void chessPiece::createSprite(sf::Texture *chessPieceTexture, int xStart) {
+void chessPiece::createSprite(sf::Texture *chessPieceTexture, int pieceStats) {
     sf::Sprite piece;
     piece.setTexture(*chessPieceTexture);
     
     if (this->color == "w") {
-        piece.setTextureRect(sf::IntRect(xStart, START_HEIGHT_WHITE, PIECE_WIDTH, PIECE_HEIGHT));
+        piece.setTextureRect(sf::IntRect(xStart[pieceStats], yStartWhite[pieceStats], pieceWidth[pieceStats], pieceHeight[pieceStats]));
     }
     else {
-        piece.setTextureRect(sf::IntRect(xStart, START_HEIGHT_BLACK, PIECE_WIDTH, PIECE_HEIGHT));
+        piece.setTextureRect(sf::IntRect(xStart[pieceStats], yStartBlack[pieceStats], pieceWidth[pieceStats], pieceHeight[pieceStats]));
     }
     
-    piece.setScale(X_SCALE, Y_SCALE);
+    piece.setScale(xScale[pieceStats], yScale[pieceStats]);
     this->piece = piece;
 
 }
