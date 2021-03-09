@@ -15,25 +15,6 @@
 
 using namespace std;
 
-class dummyChessPiece {
-    
-private:
-    
-    sf::Sprite chessPiece;
-    static int nextAvailableID;
-    int uniqueID;
-    string position;
-    
-public:
-    
-    dummyChessPiece(string position);
-    sf::Sprite returnSprite() const;
-    string returnPosition() const;
-    
-    void movePiece(string newPos);
-    
-};
-
 //abstract class
 class chessPiece {
 protected:
@@ -43,7 +24,8 @@ protected:
     static int nextAvailableID;
     sf::Texture *chessPieceTexture;
     string color;
-
+    
+    string type;
     //will be defined by subclasses
     sf::Sprite piece;
 
@@ -56,9 +38,12 @@ public:
     bool returnActive();
     string returnPosition();
     int returnID();
+    string returnType();
     
     sf::Sprite returnPiece();
     void movePiece(string newPos);
+    
+    void createSprite(sf::Texture *chessPieceTexture, int xStart);
 
     ~chessPiece();
 };

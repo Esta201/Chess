@@ -38,7 +38,7 @@ public:
     void endGame();
     void restart();
     bool returnActive();
-    
+    void switchTurn();
     int returnTurn();
     ~game();
 };

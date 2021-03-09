@@ -81,6 +81,7 @@ void game::updateGame(sf::RenderWindow &window) {
                         string squareClicked = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
                         if (active) {
                             activePiece->movePiece(squareClicked);
+                            switchTurn();
                         }
                         active = false;
                         
@@ -96,11 +97,27 @@ void game::updateGame(sf::RenderWindow &window) {
             window.clear();
             window.draw(chessBoard->returnChessBoard());
             
-            vector<chessPiece*> activePieces = playerWhite->returnActivePieces();
+            //draw all active white pieces
+            vector<chessPiece*> activeWhitePieces = playerWhite->returnActivePieces();
             
-            chessPiece* pawn0 = activePieces[0];
+            for (int i = 0; i < activeWhitePieces.size(); i++) {
+                
+                chessPiece* pawn = activeWhitePieces[i];
+                window.draw(pawn->returnPiece());
+                
+            }
             
-            window.draw(pawn0->returnPiece());
+            vector<chessPiece*> activeBlackPieces = playerBlack->returnActivePieces();
+            //draw all acive black places
+            
+            for (int i = 0; i < activeBlackPieces.size(); i++) {
+                chessPiece* pawn = activeBlackPieces[i];
+                window.draw(pawn->returnPiece());
+            }
+            
+            //chessPiece* pawn0 = activePieces[0];
+            
+            //window.draw(pawn0->returnPiece());
             
             window.display();
         }
@@ -121,7 +138,15 @@ chessPiece* game::returnActivePiece(string squareClicked) {
     
     return validPiece;
 }
-
+void game::switchTurn() {
+    
+    if (this->turn == 1) {
+        this->turn = 2;
+    }
+    else {
+        turn = 1;
+    }
+}
 int game::returnTurn() {
     return this->turn;
 }

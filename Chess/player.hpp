@@ -10,6 +10,7 @@
 #include <vector>
 #include <stdio.h>
 #include "chessPiece.hpp"
+#include <SFML/Graphics.hpp>
 
 class player{
     
@@ -19,6 +20,8 @@ private:
     
     vector<chessPiece*> activePieces;
     vector<chessPiece*> inactivePieces;
+    
+    sf::Texture *chessPieceTexture;
 
     bool turn;
     
@@ -36,6 +39,12 @@ public:
     
     vector<chessPiece*> returnActivePieces();
     vector<chessPiece*> returnInactivePieces();
+    
+    void initializePawns();
+    void initializeKnights();
+    void initializeRooks();
+    void initializeBishops();
+    void initializeRoyals();
     
     ~player();
 };

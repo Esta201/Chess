@@ -22,6 +22,9 @@ public:
 class knight: public chessPiece {
 private:
 public:
+    knight(string position, sf::Texture *chessPieceTexture, string color);
+        
+    ~knight();
 };
 
 class bishop: public chessPiece {
@@ -32,6 +35,9 @@ public:
 class rook: public chessPiece {
 private:
 public:
+    rook(string position, sf::Texture *chessPieceTexture, string color);
+    
+    ~rook();
 };
 
 class queen: public chessPiece {
