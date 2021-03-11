@@ -36,14 +36,13 @@ public:
     
     void calculateValidMoves(player &otherPlayer);
     void calculateScore();
+    void addToInactivePieces(chessPiece*);
     
     vector<chessPiece*> returnActivePieces();
     vector<chessPiece*> returnInactivePieces();
     
     void initializePawns();
-    void initializeKnights();
-    void initializeRooks();
-    void initializeBishops();
+    void initializeKnightsRooksBishops();
     void initializeRoyals();
     
     ~player();

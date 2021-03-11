@@ -40,6 +40,7 @@ public:
     int returnID();
     string returnType();
     
+    void deactivate();
     sf::Sprite returnPiece();
     void movePiece(string newPos);
     

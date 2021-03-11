@@ -28,8 +28,8 @@ player::player(string color, sf::Texture *chessPieceTexture) {
     this->chessPieceTexture = chessPieceTexture;
     
     initializePawns();
-    initializeRooks();
-    initializeKnights();
+    initializeKnightsRooksBishops();
+    initializeRoyals();
     
     //initially set their score to 0
     this->score = 0;
@@ -58,8 +58,11 @@ void player::initializePawns() {
     
 }
 
-void player::initializeRooks() {
-    string xPos = "ah";
+void player::initializeKnightsRooksBishops() {
+    string xPosRook = "ah";
+    string xPosKnight = "bg";
+    string xPosBishop = "cf";
+    
     string yPos;
     
     if (this->color == "w") {
@@ -68,17 +71,22 @@ void player::initializeRooks() {
     else {
         yPos = "8";
     }
-    string finalPos;
+    string finalPosRook, finalPosBishop, finalPosKnight;
     for (int i = 0; i < 2; i++) {
-        finalPos = xPos[i] + yPos;
-        activePieces.push_back(new rook(finalPos, chessPieceTexture, this->color));
+        finalPosRook = xPosRook[i] + yPos;
+        finalPosKnight = xPosKnight[i] + yPos;
+        finalPosBishop = xPosBishop[i] + yPos;
+        
+        activePieces.push_back(new rook(finalPosRook, chessPieceTexture, this->color));
+        activePieces.push_back(new knight(finalPosKnight, chessPieceTexture, this->color));
+        activePieces.push_back(new bishop(finalPosBishop, chessPieceTexture, this->color));
     }
     
 }
 
-void player::initializeKnights() {
-    
-    string xPos = "bg";
+void player::initializeRoyals() {
+    string xQueen = "e";
+    string xKing = "d";
     string yPos;
     
     if (this->color == "w") {
@@ -87,11 +95,10 @@ void player::initializeKnights() {
     else {
         yPos = "8";
     }
-    string finalPos;
-    for (int i = 0; i < 2; i++) {
-        finalPos = xPos[i] + yPos;
-        activePieces.push_back(new knight(finalPos, chessPieceTexture, this->color));
-    }
+    
+    activePieces.push_back(new queen(xQueen + yPos, chessPieceTexture, this->color));
+    activePieces.push_back(new king(xKing + yPos, chessPieceTexture, this->color));
+    
 }
 
 bool player::returnTurn() {
@@ -123,6 +130,24 @@ chessPiece* player::returnValidPiece(string position) {
     return validPiece;
 }
 
+void player::addToInactivePieces(chessPiece* pieceToRemove) {
+    //change the piece from active to inactive
+    pieceToRemove->deactivate();
+    
+    //find where the piece is in the active piece vector
+    int id = pieceToRemove->returnID();
+    //remove it from active vector
+    for (int i = 0; i < activePieces.size(); i++) {
+        chessPiece* currentPiece = activePieces[i];
+        
+        if (currentPiece->returnID() == id) {
+            activePieces.erase(activePieces.begin() + i);
+        }
+    }
+    //add it to inactive vector
+    
+    inactivePieces.push_back(pieceToRemove);
+}
 player::~player() {
     ;
 }

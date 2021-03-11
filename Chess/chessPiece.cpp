@@ -11,16 +11,16 @@
 #define MOVERIGHT 174.2
 #define MOVELEFT 174.2
 
-int xStart[6] = {1490, -30, 1165};
+int xStart[6] = {1490, -30, 1165, 258, 550, 860};
 
-int yStartWhite[6] = {382, 360, 350};
-int yStartBlack[6] = {0, -10, -10};
+int yStartWhite[6] = {382, 360, 350, 340, 350, 340};
+int yStartBlack[6] = {0, -10, -10, -10, -10, -10};
 
-int pieceWidth[6] = {198, 230, 270};
-int pieceHeight[6] = {233, 280, 280};
+int pieceWidth[6] = {198, 230, 270, 290, 285, 285};
+int pieceHeight[6] = {233, 280, 280, 285, 280, 285};
 
-float xScale[6] = {0.75, 0.65, 0.65};
-float yScale[6] = {0.7, 0.60, 0.60};
+float xScale[6] = {0.75, 0.65, 0.65, 0.60, 0.60, 0.60};
+float yScale[6] = {0.7, 0.60, 0.60, 0.6, 0.6, 0.6};
 
 int chessPiece::nextAvailableID = 0;
 
@@ -80,6 +80,10 @@ void chessPiece::movePiece(string newPos) {
     //set new position of piece
     this->position = newPos;
     
+}
+
+void chessPiece::deactivate() {
+    this->active = false;
 }
 
 chessPiece::~chessPiece() {

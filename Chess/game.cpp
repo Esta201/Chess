@@ -16,6 +16,8 @@ using namespace std;
 int first = 2;
 
 chessPiece* activePiece;
+chessPiece* opposingPiece;
+
 bool active = false;
 
 game::game() {
@@ -60,7 +62,7 @@ void game::updateGame(sf::RenderWindow &window) {
                 case sf::Event::MouseButtonPressed: {
                     if (event.mouseButton.button == sf::Mouse::Left) {
                         string squareClicked = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
-                        activePiece = returnActivePiece(squareClicked);
+                        activePiece = returnActivePiece(squareClicked, true);
                         
                         //if there's a valid piece in the chosen square, store the piece as the current "Active Piece"
                         if (activePiece != NULL) {
@@ -79,7 +81,22 @@ void game::updateGame(sf::RenderWindow &window) {
                 case sf::Event::MouseButtonReleased: {
                     if (event.mouseButton.button == sf::Mouse::Left) {
                         string squareClicked = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
+                        
                         if (active) {
+                            
+                            //check if the opposing player has a piece in said square
+                            //if so, deactivate the other players piece
+                            opposingPiece = returnActivePiece(squareClicked, false);
+                            if (opposingPiece != NULL) {
+                                if (returnTurn() == 1) {
+                                    playerBlack->addToInactivePieces(opposingPiece);
+                                    cout << "Recognizes opposing black piece" << endl;
+                                }
+                                else {
+                                    playerWhite->addToInactivePieces(opposingPiece);
+                                    cout << "Recognizes opposing white piece" << endl;
+                                }
+                            }
                             activePiece->movePiece(squareClicked);
                             switchTurn();
                         }
@@ -102,8 +119,8 @@ void game::updateGame(sf::RenderWindow &window) {
             
             for (int i = 0; i < activeWhitePieces.size(); i++) {
                 
-                chessPiece* pawn = activeWhitePieces[i];
-                window.draw(pawn->returnPiece());
+                chessPiece* whitePiece = activeWhitePieces[i];
+                window.draw(whitePiece->returnPiece());
                 
             }
             
@@ -111,8 +128,8 @@ void game::updateGame(sf::RenderWindow &window) {
             //draw all acive black places
             
             for (int i = 0; i < activeBlackPieces.size(); i++) {
-                chessPiece* pawn = activeBlackPieces[i];
-                window.draw(pawn->returnPiece());
+                chessPiece* blackPiece = activeBlackPieces[i];
+                window.draw(blackPiece->returnPiece());
             }
             
             //chessPiece* pawn0 = activePieces[0];
@@ -124,19 +141,30 @@ void game::updateGame(sf::RenderWindow &window) {
     }
 }
 
-chessPiece* game::returnActivePiece(string squareClicked) {
+chessPiece* game::returnActivePiece(string squareClicked, bool myPiece) {
     
     //check whether the player who's turn it is has a valid piece in the chosen square
     chessPiece* validPiece = NULL;
     
-    if (turn == 1) {
-        validPiece = playerWhite->returnValidPiece(squareClicked);
-    }
-    else {
-        validPiece = playerBlack->returnValidPiece(squareClicked);
-    }
-    
-    return validPiece;
+        if (turn == 1) {
+            if (myPiece) {
+                validPiece = playerWhite->returnValidPiece(squareClicked);
+            }
+            else {
+                validPiece = playerBlack->returnValidPiece(squareClicked);
+            }
+        }
+        else {
+            if (myPiece) {
+                validPiece = playerBlack->returnValidPiece(squareClicked);
+            }
+            else {
+                validPiece = playerWhite->returnValidPiece(squareClicked);
+            }
+            
+        }
+        
+        return validPiece;
 }
 void game::switchTurn() {
     
@@ -146,6 +174,7 @@ void game::switchTurn() {
     else {
         turn = 1;
     }
+    
 }
 int game::returnTurn() {
     return this->turn;

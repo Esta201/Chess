@@ -33,7 +33,7 @@ public:
     void generateEndScreen(sf::RenderWindow &window);
     void updateGame(sf::RenderWindow &window);
     
-    chessPiece* returnActivePiece(string squareClicked);
+    chessPiece* returnActivePiece(string squareClicked, bool myPiece);
     
     void endGame();
     void restart();

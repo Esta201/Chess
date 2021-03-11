@@ -30,6 +30,9 @@ public:
 class bishop: public chessPiece {
 private:
 public:
+    bishop(string position, sf::Texture *chessPieceTexture, string color);
+        
+    ~bishop();
 };
 
 class rook: public chessPiece {
@@ -43,11 +46,17 @@ public:
 class queen: public chessPiece {
 private:
 public:
+    queen(string position, sf::Texture *chessPieceTexture, string color);
+    
+    ~queen();
 };
 
 class king: public chessPiece {
 private:
 public:
+    king(string position, sf::Texture *chessPieceTexture, string color);
+    
+    ~king();
 };
 
 #endif /* pieceType_hpp */

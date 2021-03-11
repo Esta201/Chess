@@ -43,3 +43,36 @@ knight::knight(string position, sf::Texture *chessPieceTexture, string color) : 
 knight::~knight() {
     ;
 }
+
+bishop::bishop(string position, sf::Texture *chessPieceTexture, string color) : chessPiece(position, chessPieceTexture, color) {
+    this->type = "bishop";
+    
+    createSprite(chessPieceTexture, 3);
+    movePiece(position);
+}
+
+bishop::~bishop() {
+    ;
+}
+
+king::king(string position, sf::Texture *chessPieceTexture, string color) : chessPiece(position, chessPieceTexture, color) {
+    this->type = "king";
+    
+    createSprite(chessPieceTexture, 4);
+    movePiece(position);
+}
+
+king::~king() {
+    ;
+}
+
+queen::queen(string position, sf::Texture *chessPieceTexture, string color) : chessPiece(position, chessPieceTexture, color) {
+    this->type = "queen";
+    
+    createSprite(chessPieceTexture, 5);
+    movePiece(position);
+}
+
+queen::~queen() {
+    ;
+}
