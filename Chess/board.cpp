@@ -8,6 +8,7 @@
 #include "board.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "ResourcePath.hpp"
 
 #define BOARD_X 1400
 #define BOARD_Y 1400
@@ -16,8 +17,8 @@ board::board() {
     
     // generate background texture (chess board)
     sf::Texture* bgTexture = new sf::Texture();
-    
-    if (!bgTexture->loadFromFile("/Users/earlene/Desktop/Chess/Chess/Assets/chessBoard.png")) { //make texture path non-absolute
+    cout << resourcePath() << endl;
+    if (!bgTexture->loadFromFile("Resources/chessBoard.png")) { //make texture path non-absolute
         cout << "Background image couldn't be loaded" << endl;
     };
     
@@ -37,6 +38,8 @@ sf::Sprite board::returnChessBoard() {
 }
 
 void board::rotateBoard() {
+    
+    //rotate the board 180 degrees
     chessBoard.rotate(180);
     if (prevRotate) {
         chessBoard.setPosition(BOARD_X, BOARD_Y);
@@ -47,6 +50,7 @@ void board::rotateBoard() {
     
     prevRotate = !prevRotate;
     
+    //switch positions of all the chesspieces
 }
 board::~board() {
     delete bgTexture;

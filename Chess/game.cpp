@@ -10,7 +10,7 @@
 #include <string>
 #include <iostream>
 #include "movementFunctions.hpp"
-
+#include "ResourcePath.hpp"
 
 using namespace std;
 int first = 2;
@@ -28,7 +28,7 @@ game::game() {
     //import the texture for the chess pieces
     sf::Texture *chessPieceTexture = new sf::Texture();
     
-    if (!chessPieceTexture->loadFromFile("/Users/earlene/Desktop/Chess/Chess/Assets/chessPieces.png")) {
+    if (!chessPieceTexture->loadFromFile("Resources/chessPieces.png")) {
         cout << "Couldn't import chess piece images" << endl;
     }
     
@@ -83,8 +83,22 @@ void game::updateGame(sf::RenderWindow &window) {
                         string squareClicked = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
                         
                         if (active) {
+                            chessPiece* ownPiece = returnActivePiece(squareClicked, true);
                             
-                            //check if the opposing player has a piece in said square
+                            if (squareClicked == activePiece->returnPosition()) {
+                                active = false;
+                            }
+                            //check if player has their own active piece the chosen square
+                            else if(ownPiece != NULL){
+                                //don't allow player to move into own piece square
+                                active = false;
+                            }
+                        }
+
+                        if (active) {
+                            
+                            //check if the opposing player has a piece in the square chosen
+                            
                             //if so, deactivate the other players piece
                             opposingPiece = returnActivePiece(squareClicked, false);
                             if (opposingPiece != NULL) {
@@ -97,7 +111,11 @@ void game::updateGame(sf::RenderWindow &window) {
                                     cout << "Recognizes opposing white piece" << endl;
                                 }
                             }
+                            
+                            //move the active piece into its chosen square
                             activePiece->movePiece(squareClicked);
+                            
+                            //switch turns
                             switchTurn();
                         }
                         active = false;
@@ -131,10 +149,6 @@ void game::updateGame(sf::RenderWindow &window) {
                 chessPiece* blackPiece = activeBlackPieces[i];
                 window.draw(blackPiece->returnPiece());
             }
-            
-            //chessPiece* pawn0 = activePieces[0];
-            
-            //window.draw(pawn0->returnPiece());
             
             window.display();
         }
@@ -176,6 +190,7 @@ void game::switchTurn() {
     }
     
 }
+
 int game::returnTurn() {
     return this->turn;
 }

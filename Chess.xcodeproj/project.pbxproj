@@ -19,6 +19,7 @@
 		9E86891E25F239DB000E27CB /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86891C25F239DB000E27CB /* player.cpp */; };
 		9E86892225F23E0F000E27CB /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86892025F23E0F000E27CB /* board.cpp */; };
 		9E86893025F3A970000E27CB /* pieceType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86892F25F3A970000E27CB /* pieceType.cpp */; };
+		9EB589FA260B17A40065BA67 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9EB589F9260B17A40065BA67 /* ResourcePath.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,7 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9E8688F225F04443000E27CB /* Chess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Chess; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E8688F225F04443000E27CB /* Chess.xcodeproj */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Chess.xcodeproj; path = ../../../../../../../../Desktop/Chess/Chess.xcodeproj; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E8688F525F04443000E27CB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9E8688FF25F045F3000E27CB /* libsfml-window.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-window.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-window.2.5.1.dylib"; sourceTree = "<group>"; };
 		9E86890025F045F3000E27CB /* libsfml-network.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-network.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-network.2.5.1.dylib"; sourceTree = "<group>"; };
@@ -53,6 +54,8 @@
 		9E86892125F23E0F000E27CB /* board.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = board.hpp; sourceTree = "<group>"; };
 		9E86892E25F3A970000E27CB /* pieceType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pieceType.hpp; sourceTree = "<group>"; };
 		9E86892F25F3A970000E27CB /* pieceType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pieceType.cpp; sourceTree = "<group>"; };
+		9EB589F8260B17A40065BA67 /* ResourcePath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
+		9EB589F9260B17A40065BA67 /* ResourcePath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +86,7 @@
 		9E8688F325F04443000E27CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9E8688F225F04443000E27CB /* Chess */,
+				9E8688F225F04443000E27CB /* Chess.xcodeproj */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,6 +99,8 @@
 				9E86891525F0A08D000E27CB /* movementFunctions.hpp */,
 				9E86891925F239CF000E27CB /* game.hpp */,
 				9E86891825F239CF000E27CB /* game.cpp */,
+				9EB589F8260B17A40065BA67 /* ResourcePath.hpp */,
+				9EB589F9260B17A40065BA67 /* ResourcePath.mm */,
 				9E86892125F23E0F000E27CB /* board.hpp */,
 				9E86892025F23E0F000E27CB /* board.cpp */,
 				9E86891D25F239DB000E27CB /* player.hpp */,
@@ -137,7 +142,7 @@
 			);
 			name = Chess;
 			productName = Chess;
-			productReference = 9E8688F225F04443000E27CB /* Chess */;
+			productReference = 9E8688F225F04443000E27CB /* Chess.xcodeproj */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -180,6 +185,7 @@
 				9E86891E25F239DB000E27CB /* player.cpp in Sources */,
 				9E86892225F23E0F000E27CB /* board.cpp in Sources */,
 				9E86891025F07377000E27CB /* chessPiece.cpp in Sources */,
+				9EB589FA260B17A40065BA67 /* ResourcePath.mm in Sources */,
 				9E86893025F3A970000E27CB /* pieceType.cpp in Sources */,
 				9E86891625F0A08D000E27CB /* movementFunctions.cpp in Sources */,
 				9E86891A25F239CF000E27CB /* game.cpp in Sources */,
@@ -303,7 +309,9 @@
 		9E8688FA25F04443000E27CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				HEADER_SEARCH_PATHS = "${SRCROOT}/ExternalLibraries/SFML/include";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -316,7 +324,9 @@
 		9E8688FB25F04443000E27CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				HEADER_SEARCH_PATHS = "${SRCROOT}/ExternalLibraries/SFML/include";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
