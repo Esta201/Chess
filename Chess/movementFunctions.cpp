@@ -9,6 +9,9 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include "chessPiece.hpp"
+#include "pieceType.hpp"
+
 using namespace std;
 // given the x and y coordinates of a click, return which chess square the user is on
 
@@ -25,5 +28,17 @@ string returnCurrentSquare(int mouseX, int mouseY, int windowX, int windowY) {
     char xChar = locationX;
     
     return (string(1, xChar) + to_string(inverseY[locationY]));
+}
+
+bool find(string pos, vector<string> activePos) {
+    
+    if (std::find(activePos.begin(), activePos.end(), pos) != activePos.end()) {
+        std::cout << "Element found";
+        return true;
+    }
+    else {
+        std::cout << "Element not found";
+        return false;
+    };
 }
 

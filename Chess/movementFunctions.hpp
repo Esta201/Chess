@@ -14,5 +14,6 @@
 using namespace std;
 
 string returnCurrentSquare(int x, int y, int windowX, int windowY);
+bool find(string pos, vector<string> activePos);
 
 #endif /* movementFunctions_hpp */

@@ -6,7 +6,9 @@
 //
 
 #include "chessPiece.hpp"
+#include <vector>
 #include <iostream>
+#include <list>
 
 #define MOVERIGHT 174.2
 #define MOVELEFT 174.2
@@ -34,6 +36,19 @@ chessPiece::chessPiece(string position, sf::Texture *chessPieceTexture, string c
     
     this->chessPieceTexture = chessPieceTexture;
     this->color = color;
+    
+    //initially, set first move to true
+    this->firstMove = true;
+    
+    this->validMoves = vector<string>();
+}
+
+bool chessPiece::returnFirstMove() {
+    return this->firstMove;
+}
+
+void chessPiece::setFirstMove(bool value) {
+    this->firstMove = value;
 }
 
 bool chessPiece::returnActive() {
@@ -74,7 +89,7 @@ void chessPiece::createSprite(sf::Texture *chessPieceTexture, int pieceStats) {
 
 void chessPiece::movePiece(string newPos) {
     
-    //find teh difference between the new position and the old position, and change x and y position accordingly
+    //find the difference between the new position and the old position, and change x and y position accordingly
     this->piece.move((int(newPos[0]) - int(this->position[0])) * MOVERIGHT,(int(this->position[1]) - int(newPos[1])) * MOVELEFT);
     
     //set new position of piece
@@ -84,6 +99,18 @@ void chessPiece::movePiece(string newPos) {
 
 void chessPiece::deactivate() {
     this->active = false;
+}
+
+void chessPiece::setValidMoves(vector<string> validMoves) {
+    this->validMoves = validMoves;
+}
+
+vector<string> chessPiece::returnValidMoves() {
+    return this->validMoves;
+}
+
+void chessPiece::findValidMoves(bool turn, vector<string> whitePieces, vector<string> blackPieces) {
+    ;
 }
 
 chessPiece::~chessPiece() {

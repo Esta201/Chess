@@ -45,6 +45,7 @@ public:
     void initializeKnightsRooksBishops();
     void initializeRoyals();
     
+    vector<string> returnActivePiecePos();
     ~player();
 };
 

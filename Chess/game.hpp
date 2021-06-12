@@ -32,6 +32,7 @@ public:
     game();
     void generateEndScreen(sf::RenderWindow &window);
     void updateGame(sf::RenderWindow &window);
+    void drawActivePieces(sf::RenderWindow &window);
     
     chessPiece* returnActivePiece(string squareClicked, bool myPiece);
     

@@ -24,14 +24,14 @@ protected:
     static int nextAvailableID;
     sf::Texture *chessPieceTexture;
     string color;
+    bool firstMove;
+    vector<string> validMoves;
     
     string type;
     //will be defined by subclasses
     sf::Sprite piece;
 
-    string position;
-    vector<string> validMoves();
-    
+    string position;    
 public:
     chessPiece(string position, sf::Texture *chessPieceTexture, string color);
     
@@ -40,12 +40,20 @@ public:
     int returnID();
     string returnType();
     
+    bool returnFirstMove();
+    void setFirstMove(bool value);
+    
     void deactivate();
     sf::Sprite returnPiece();
     void movePiece(string newPos);
     
     void createSprite(sf::Texture *chessPieceTexture, int xStart);
-
+    
+    //update all valid moves
+    vector<string> returnValidMoves();
+    void setValidMoves(vector<string> validMoves);
+    virtual void findValidMoves(bool turn, vector<string> whitePieces, vector<string> blackPieces);
+    
     ~chessPiece();
 };
 

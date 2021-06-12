@@ -62,11 +62,14 @@ void game::updateGame(sf::RenderWindow &window) {
                 case sf::Event::MouseButtonPressed: {
                     if (event.mouseButton.button == sf::Mouse::Left) {
                         string squareClicked = returnCurrentSquare(event.mouseButton.x, event.mouseButton.y, window.getSize().x, window.getSize().y);
-                        activePiece = returnActivePiece(squareClicked, true);
+                            activePiece = returnActivePiece(squareClicked, true);
                         
                         //if there's a valid piece in the chosen square, store the piece as the current "Active Piece"
                         if (activePiece != NULL) {
                             active = true;
+                            
+                            //update all valid moves for the chosen piece
+                            activePiece->findValidMoves(returnTurn(), playerWhite->returnActivePiecePos(), playerBlack->returnActivePiecePos());
                             cout << activePiece->returnPosition() << endl;
                         }
                         else {
@@ -112,15 +115,23 @@ void game::updateGame(sf::RenderWindow &window) {
                                 }
                             }
                             
+                            //this needs to be updated to check that it's a valid move
                             //move the active piece into its chosen square
+                            if(activePiece->returnType() == "pawn") {
+                                vector<string> validMoves = activePiece->returnValidMoves();
+                                if (find(squareClicked, validMoves)) {
+                                    activePiece->movePiece(squareClicked);
+                                    switchTurn();
+                                }
+                            }
+                            else {
                             activePiece->movePiece(squareClicked);
-                            
-                            //switch turns
                             switchTurn();
+                            }
+                            //switch turns
+                            
                         }
                         active = false;
-                        
-                        
                         cout << squareClicked << endl;
                     }
                     break;
@@ -129,31 +140,38 @@ void game::updateGame(sf::RenderWindow &window) {
                     break;
             }
             
-            window.clear();
-            window.draw(chessBoard->returnChessBoard());
-            
-            //draw all active white pieces
-            vector<chessPiece*> activeWhitePieces = playerWhite->returnActivePieces();
-            
-            for (int i = 0; i < activeWhitePieces.size(); i++) {
-                
-                chessPiece* whitePiece = activeWhitePieces[i];
-                window.draw(whitePiece->returnPiece());
-                
-            }
-            
-            vector<chessPiece*> activeBlackPieces = playerBlack->returnActivePieces();
-            //draw all acive black places
-            
-            for (int i = 0; i < activeBlackPieces.size(); i++) {
-                chessPiece* blackPiece = activeBlackPieces[i];
-                window.draw(blackPiece->returnPiece());
-            }
-            
-            window.display();
+            //update the board
+            drawActivePieces(window);
         }
     }
 }
+
+void game::drawActivePieces(sf::RenderWindow &window) {
+    
+    window.clear();
+    window.draw(chessBoard->returnChessBoard());
+    
+    //draw all active white pieces
+    vector<chessPiece*> activeWhitePieces = playerWhite->returnActivePieces();
+    
+    for (int i = 0; i < activeWhitePieces.size(); i++) {
+        
+        chessPiece* whitePiece = activeWhitePieces[i];
+        window.draw(whitePiece->returnPiece());
+        
+    }
+    
+    vector<chessPiece*> activeBlackPieces = playerBlack->returnActivePieces();
+    //draw all acive black places
+    
+    for (int i = 0; i < activeBlackPieces.size(); i++) {
+        chessPiece* blackPiece = activeBlackPieces[i];
+        window.draw(blackPiece->returnPiece());
+    }
+    
+    window.display();
+}
+    
 
 chessPiece* game::returnActivePiece(string squareClicked, bool myPiece) {
     
@@ -183,7 +201,7 @@ chessPiece* game::returnActivePiece(string squareClicked, bool myPiece) {
 void game::switchTurn() {
     
     if (this->turn == 1) {
-        this->turn = 2;
+        this->turn = 0;
     }
     else {
         turn = 1;

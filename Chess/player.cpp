@@ -10,6 +10,7 @@
 #include "pieceType.hpp"
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -147,6 +148,16 @@ void player::addToInactivePieces(chessPiece* pieceToRemove) {
     //add it to inactive vector
     
     inactivePieces.push_back(pieceToRemove);
+}
+
+vector<string> player::returnActivePiecePos() {
+    vector<string> activePiecePos = vector<string>();
+    
+    for (int i = 0; i < activePieces.size(); i++) {
+        activePiecePos.push_back(activePieces[i]->returnPosition());
+    }
+    
+    return activePiecePos;
 }
 player::~player() {
     ;

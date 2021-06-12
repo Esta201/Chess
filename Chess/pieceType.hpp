@@ -15,7 +15,7 @@ class pawn: public chessPiece {
 private:
 public:
     pawn(string position, sf::Texture *chessPieceTexture, string color);
-        
+    void findValidMoves(bool turn, vector<string> whitePieces, vector<string> blackPieces);
     ~pawn();
 };
 
