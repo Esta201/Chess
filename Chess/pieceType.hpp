@@ -24,7 +24,7 @@ class knight: public chessPiece {
 private:
 public:
     knight(string position, sf::Texture *chessPieceTexture, string color);
-
+    void findValidMoves(bool whiteMove, vector<string> whitePieces, vector<string> blackPieces);
     ~knight();
 };
 

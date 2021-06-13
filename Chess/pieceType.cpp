@@ -35,8 +35,8 @@ void pawn::findValidMoves(bool whiteMove, vector<string> whitePieces, vector<str
     vector<string> ownPieces;
     vector<string> opposingPieces;
     string potentialMove;
-    int currentDigitPos = returnVerticalPosition();
-    
+    int verticalPosition = returnVerticalPosition();
+    int horizontalPosition = (int)position[0];
     
     if (whiteMove) {
         ownPieces = whitePieces;
@@ -51,7 +51,7 @@ void pawn::findValidMoves(bool whiteMove, vector<string> whitePieces, vector<str
     
     //if first turn, then do a check for two+
     for (int i = 0; i < vMovement.size(); i++) {
-        potentialMove = position[0] + to_string(currentDigitPos + vMovement[i]);
+        potentialMove = position[0] + to_string(verticalPosition + vMovement[i]);
         validMove = false;
         bool ownPieceInWay = find(potentialMove, ownPieces);
         bool opposingPieceInWay = find(potentialMove, opposingPieces);
@@ -77,7 +77,7 @@ void pawn::findValidMoves(bool whiteMove, vector<string> whitePieces, vector<str
         int verticalMovement = vMovement[1]; //will be -1 or 1 depending on the color
         int horizontalMovement = hMovement[i]; //will be -1 or 1 for both white and black
         
-        potentialMove = char((int)position[0] + horizontalMovement) + to_string(currentDigitPos + verticalMovement);
+        potentialMove = char(horizontalPosition + horizontalMovement) + to_string(verticalPosition + verticalMovement);
         cout << "horizontal move : " + potentialMove << endl;
         
         if (find(potentialMove, opposingPieces)) {
@@ -167,6 +167,49 @@ knight::knight(string position, sf::Texture *chessPieceTexture, string color) : 
     
     createSprite(chessPieceTexture, 2);
     movePiece(position);
+}
+
+void knight::findValidMoves(bool whiteMove, vector<string> whitePieces, vector<string> blackPieces) {
+    vector<string> validMoves = vector<string>();
+    vector<int> horizontalMovement = {1, -1, 2, -2, 1, -1, 2, -2};
+    vector<int> verticalMovement = { 2,  2, 1,  1, -2, -2, -1, -1};
+    int verticalPosition = returnVerticalPosition();
+    int horizontalPosition = (int)position[0];
+    
+    vector<string> ownPieces;
+    vector<string> opposingPieces;
+    
+    cout << "Knight valid moves" << endl;
+    
+    if (whiteMove) {
+        ownPieces = whitePieces;
+        opposingPieces = blackPieces;
+    } else {
+        ownPieces = blackPieces;
+        opposingPieces = whitePieces;
+    }
+    
+    for (int i = 0; i < horizontalMovement.size(); i++) {
+        int newVertical = verticalPosition + verticalMovement[i];
+        int newHorizontal = horizontalPosition + horizontalMovement[i];
+        string potentialMove = char(newHorizontal) + to_string(newVertical);
+
+        if(find(potentialMove, ownPieces)) {
+            ;
+        }
+        else if((newVertical < 1) or (newVertical > 8) or (newHorizontal < 97) or (newHorizontal > 104)) {
+            ;
+        }
+        else {
+            validMoves.push_back(potentialMove);
+        }
+        
+    }
+    
+    setValidMoves(validMoves);
+    for (int i = 0; i < validMoves.size(); i++) {
+        cout << "Valid knight move : " + validMoves[i] << endl;
+    }
 }
     
 knight::~knight() {
