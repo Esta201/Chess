@@ -48,7 +48,7 @@ class queen: public chessPiece {
 private:
 public:
     queen(string position, sf::Texture *chessPieceTexture, string color);
-
+    void findValidMoves(bool whiteMove, vector<string> whitePieces, vector<string> blackPieces);
     ~queen();
 };
 
