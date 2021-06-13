@@ -117,7 +117,7 @@ void game::updateGame(sf::RenderWindow &window) {
                             
                             //this needs to be updated to check that it's a valid move
                             //move the active piece into its chosen square
-                            if((activePiece->returnType() == "pawn") or (activePiece->returnType() == "rook") or (activePiece->returnType() == "knight")) {
+                            if((activePiece->returnType() == "pawn") or (activePiece->returnType() == "rook") or (activePiece->returnType() == "knight") or (activePiece->returnType() == "bishop")) {
                                 vector<string> validMoves = activePiece->returnValidMoves();
                                 if (find(squareClicked, validMoves)) {
                                     activePiece->movePiece(squareClicked);

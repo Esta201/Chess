@@ -32,7 +32,7 @@ class bishop: public chessPiece {
 private:
 public:
     bishop(string position, sf::Texture *chessPieceTexture, string color);
-
+    void findValidMoves(bool whiteMove, vector<string> whitePieces, vector<string> blackPieces);
     ~bishop();
 };
 

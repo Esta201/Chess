@@ -66,7 +66,6 @@ void pawn::findValidMoves(bool whiteMove, vector<string> whitePieces, vector<str
         else {
             if (firstMove and validMove) {
                 validMoves.push_back(potentialMove);
-                setFirstMove(false);
                 cout << "first turn : " + potentialMove << endl;
             }
         }
@@ -221,6 +220,61 @@ bishop::bishop(string position, sf::Texture *chessPieceTexture, string color) : 
     
     createSprite(chessPieceTexture, 3);
     movePiece(position);
+}
+
+void bishop::findValidMoves(bool whiteMove, vector<string> whitePieces, vector<string> blackPieces) {
+    vector<string> validMoves = vector<string>();
+    vector<int> horizontalMovement = {1, -1, 1, -1};
+    vector<int> verticalMovement = {1, 1, -1, -1};
+    int verticalPosition = returnVerticalPosition();
+    int horizontalPosition = (int)position[0];
+    
+    vector<string> ownPieces;
+    vector<string> opposingPieces;
+    
+    cout << "Bishop valid moves" << endl;
+    
+    if (whiteMove) {
+        ownPieces = whitePieces;
+        opposingPieces = blackPieces;
+    } else {
+        ownPieces = blackPieces;
+        opposingPieces = whitePieces;
+    }
+    
+    for (int i = 0; i < horizontalMovement.size(); i++) {
+        bool canStillMove = true;
+        int newVertical = verticalPosition;
+        int newHorizontal = horizontalPosition;
+        while(canStillMove) {
+            //calculate the next position using the combination of horizontal and vertical movement (e.g., straight up, down, left, or right)
+            newVertical = verticalMovement[i] + newVertical;
+            newHorizontal = horizontalMovement[i] + newHorizontal; //holds the char value for letter
+            string potentialMove = char(newHorizontal) + to_string(newVertical);
+
+            //if it's out of bounds (e.g., vertical is out of the board, or the horizontal is out of the board (less than A or greater than H)
+            if((newVertical < 1) or (newVertical > 8) or (newHorizontal < 97) or (newHorizontal > 104)) {
+                canStillMove = false;
+            }
+            //if ownpiece in the way
+            else if (find(potentialMove, ownPieces)) {
+                canStillMove = false;
+            }
+            //if opposing piece in the way
+            else if (find(potentialMove, opposingPieces)){
+                validMoves.push_back(potentialMove);
+                canStillMove = false;
+            }
+            //else
+            else {
+                validMoves.push_back(potentialMove);
+            }
+        }
+    }
+    
+    setValidMoves(validMoves);
+    
+    
 }
 
 bishop::~bishop() {
