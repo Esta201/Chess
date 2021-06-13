@@ -53,6 +53,7 @@ public:
     vector<string> returnValidMoves();
     void setValidMoves(vector<string> validMoves);
     virtual void findValidMoves(bool turn, vector<string> whitePieces, vector<string> blackPieces);
+    int returnVerticalPosition();
     
     ~chessPiece();
 };

@@ -33,11 +33,9 @@ string returnCurrentSquare(int mouseX, int mouseY, int windowX, int windowY) {
 bool find(string pos, vector<string> activePos) {
     
     if (std::find(activePos.begin(), activePos.end(), pos) != activePos.end()) {
-        std::cout << "Element found";
         return true;
     }
     else {
-        std::cout << "Element not found";
         return false;
     };
 }

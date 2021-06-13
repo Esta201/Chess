@@ -9,6 +9,8 @@
 #include <vector>
 #include <iostream>
 #include <list>
+#include <stdio.h>
+#include <sstream>
 
 #define MOVERIGHT 174.2
 #define MOVELEFT 174.2
@@ -111,6 +113,18 @@ vector<string> chessPiece::returnValidMoves() {
 
 void chessPiece::findValidMoves(bool turn, vector<string> whitePieces, vector<string> blackPieces) {
     ;
+}
+
+int chessPiece::returnVerticalPosition() {
+    int vertPos;
+    //convert digit position into integer
+    stringstream ss;
+    
+    //convert position to integer
+    ss << position[1];
+    ss >> vertPos;
+    
+    return vertPos;
 }
 
 chessPiece::~chessPiece() {
