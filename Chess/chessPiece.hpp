@@ -52,9 +52,11 @@ public:
     //update all valid moves
     vector<string> returnValidMoves();
     void setValidMoves(vector<string> validMoves);
+    void addToValidMoves(string value);
     virtual void findValidMoves(bool turn, vector<string> whitePieces, vector<string> blackPieces);
-    int returnVerticalPosition();
     
+    int returnVerticalPosition();
+    vector<string> calculateRepetitiveMovements(bool whiteMove, vector<string> whitePieces, vector<string> blackPieces, vector<int> horizontalMovement, vector<int> verticalMovement); //calculates repetitive valid movements given the pattern (e.g., continuously move diagonally, etc.)
     ~chessPiece();
 };
 

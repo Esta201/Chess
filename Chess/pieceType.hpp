@@ -54,9 +54,9 @@ public:
 
 class king: public chessPiece {
 private:
+    vector<string> castlingValues;
 public:
     king(string position, sf::Texture *chessPieceTexture, string color);
-
     ~king();
 };
 

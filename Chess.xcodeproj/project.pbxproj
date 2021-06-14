@@ -19,6 +19,7 @@
 		9E86891E25F239DB000E27CB /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86891C25F239DB000E27CB /* player.cpp */; };
 		9E86892225F23E0F000E27CB /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86892025F23E0F000E27CB /* board.cpp */; };
 		9E86893025F3A970000E27CB /* pieceType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E86892F25F3A970000E27CB /* pieceType.cpp */; };
+		9EABF00C2676F2E8001A78F5 /* validMoveDot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EABF00A2676F2E8001A78F5 /* validMoveDot.cpp */; };
 		9EB589FA260B17A40065BA67 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9EB589F9260B17A40065BA67 /* ResourcePath.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
@@ -35,7 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9E8688F225F04443000E27CB /* Chess.xcodeproj */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Chess.xcodeproj; path = ../../../../../../../../Desktop/Chess/Chess.xcodeproj; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E8688F225F04443000E27CB /* Chess.xcodeproj */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Chess.xcodeproj; path = Chess; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E8688F525F04443000E27CB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9E8688FF25F045F3000E27CB /* libsfml-window.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-window.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-window.2.5.1.dylib"; sourceTree = "<group>"; };
 		9E86890025F045F3000E27CB /* libsfml-network.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-network.2.5.1.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-network.2.5.1.dylib"; sourceTree = "<group>"; };
@@ -54,6 +55,8 @@
 		9E86892125F23E0F000E27CB /* board.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = board.hpp; sourceTree = "<group>"; };
 		9E86892E25F3A970000E27CB /* pieceType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pieceType.hpp; sourceTree = "<group>"; };
 		9E86892F25F3A970000E27CB /* pieceType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pieceType.cpp; sourceTree = "<group>"; };
+		9EABF00A2676F2E8001A78F5 /* validMoveDot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = validMoveDot.cpp; sourceTree = "<group>"; };
+		9EABF00B2676F2E8001A78F5 /* validMoveDot.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = validMoveDot.hpp; sourceTree = "<group>"; };
 		9EB589F8260B17A40065BA67 /* ResourcePath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
 		9EB589F9260B17A40065BA67 /* ResourcePath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +112,8 @@
 				9E86890E25F07377000E27CB /* chessPiece.cpp */,
 				9E86892E25F3A970000E27CB /* pieceType.hpp */,
 				9E86892F25F3A970000E27CB /* pieceType.cpp */,
+				9EABF00A2676F2E8001A78F5 /* validMoveDot.cpp */,
+				9EABF00B2676F2E8001A78F5 /* validMoveDot.hpp */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				9E86892225F23E0F000E27CB /* board.cpp in Sources */,
 				9E86891025F07377000E27CB /* chessPiece.cpp in Sources */,
 				9EB589FA260B17A40065BA67 /* ResourcePath.mm in Sources */,
+				9EABF00C2676F2E8001A78F5 /* validMoveDot.cpp in Sources */,
 				9E86893025F3A970000E27CB /* pieceType.cpp in Sources */,
 				9E86891625F0A08D000E27CB /* movementFunctions.cpp in Sources */,
 				9E86891A25F239CF000E27CB /* game.cpp in Sources */,

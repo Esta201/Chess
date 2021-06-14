@@ -28,7 +28,7 @@ player::player(string color, sf::Texture *chessPieceTexture) {
     
     this->chessPieceTexture = chessPieceTexture;
     
-    initializePawns();
+    //initializePawns();
     initializeKnightsRooksBishops();
     initializeRoyals();
     
@@ -86,8 +86,8 @@ void player::initializeKnightsRooksBishops() {
 }
 
 void player::initializeRoyals() {
-    string xQueen = "e";
-    string xKing = "d";
+    string xQueen = "d";
+    string xKing = "e";
     string yPos;
     
     if (this->color == "w") {

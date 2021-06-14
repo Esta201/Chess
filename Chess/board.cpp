@@ -52,6 +52,7 @@ void board::rotateBoard() {
     
     //switch positions of all the chesspieces
 }
+
 board::~board() {
     delete bgTexture;
 }

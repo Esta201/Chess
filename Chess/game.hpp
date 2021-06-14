@@ -25,6 +25,7 @@ private:
     player* playerBlack;
     
     sf::Texture* chessPieceTexture;
+    sf::Texture* dotTexture;
     
     int turn;
     
@@ -32,9 +33,11 @@ public:
     game();
     void generateEndScreen(sf::RenderWindow &window);
     void updateGame(sf::RenderWindow &window);
-    void drawActivePieces(sf::RenderWindow &window);
+    void drawActivePieces(sf::RenderWindow &window, vector<string> validMoves);
+    void drawValidMoves(sf::RenderWindow &window, vector<string> validMoves);
     
     chessPiece* returnActivePiece(string squareClicked, bool myPiece);
+    vector<string> returnCastlingPositions(bool whiteTurn, chessPiece* king);
     
     void endGame();
     void restart();
