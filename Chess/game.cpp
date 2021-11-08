@@ -39,7 +39,7 @@ game::game() {
     }
     
     if (!dotTexture->loadFromFile("Resources/dot.png")) {
-        cout << "Couldn't import do image" << endl;
+        cout << "Couldn't import dot image" << endl;
     }
     
     this->chessPieceTexture = chessPieceTexture;

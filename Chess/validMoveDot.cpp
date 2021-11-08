@@ -11,8 +11,8 @@
 #include <string>
 
 using namespace std;
-float size[] = {0.15, 0.15};
-float initialOffset[] = {17, 16};
+float size[] = {0.10, 0.10};
+float initialOffset[] = {45, 45};
 
 #define MOVERIGHT 174.2
 #define MOVELEFT 174.2
@@ -29,6 +29,8 @@ validMoveDot::validMoveDot(sf::Texture *dotTexture, string position) {
 void validMoveDot::createSprite(sf::Texture *dotTexture) {
     sf::Sprite dotSprite;
     
+    //set texture, scale, and original position of dot
+    dotSprite.setColor(sf::Color(133,168,205,128));
     dotSprite.setTexture(*dotTexture);
     dotSprite.setScale(size[0], size[1]);
     dotSprite.move(initialOffset[0], initialOffset[1]);
